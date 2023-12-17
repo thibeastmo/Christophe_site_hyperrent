@@ -1,0 +1,63 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="MasterPage.master.cs" Inherits="MasterPage" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    <title>Hyperrent</title>
+    <link href="css/styles.css" rel="stylesheet" />
+    <%--<link href="css/styles.min.css" rel="stylesheet" />--%>
+    <link rel="shortcut icon" href="images/logo_hyperrent.ico">
+    <%--<script src="scripts/editableParagraphs.js"></script>--%>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+    <header id="header">
+        <nav>
+            <ul>
+                <li onclick="location.href='Default.aspx'"><a href="Default.aspx">Over</a></li>
+                <li onclick="location.href='Faq.aspx'"><a href="Faq.aspx">Interview</a></li>
+                <li onclick="location.href='Info.aspx'"><a href="Info.aspx">Wie is wie</a></li>
+                <li onclick="location.href='Blog.aspx'"><a href="Blog.aspx">Blog</a></li>
+                <li onclick="location.href='Lessen.aspx'"><a href="Lessen.aspx">Lessen</a></li>
+                <li onclick="location.href='Reserveren.aspx'"><a href="Reserveren.aspx">Reserveren</a></li>
+                <li onclick="location.href='CourseReader.aspx'"><a href="CourseReader.aspx">Course reader</a></li>
+            </ul>
+        </nav>
+        <div id="belownav"></div>
+        <div id="underheader" class="underheader" runat="server"></div>
+    </header>
+    <form id="form1" runat="server">
+        <div id="fullpage">
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+            </asp:ContentPlaceHolder>
+        </div>
+    </form>
+    <footer>
+        <div>
+            <div>
+                <asp:Label ID="lblStraat" runat="server" Text="Kronenburgstraat 62"></asp:Label>
+                <asp:Label ID="lblGemeente" runat="server" Text="2000 Antwerpen"></asp:Label>
+                <asp:HyperLink ID="lblMail" runat="server" NavigateUrl="mailto:info@hyperrent.be">info@hyperrent.be</asp:HyperLink>
+                <asp:HyperLink ID="lblTel" runat="server" NavigateUrl="tel:034391989">03 439 19 89</asp:HyperLink>
+                <%--<asp:Label ID="lblMail" runat="server" Text="info@hyperrent.be"></asp:Label>
+                <asp:Label ID="lblTel" runat="server" Text="03 439 19 89" href="tel:034391989"></asp:Label>--%>
+                <div>
+                    <span onclick="location.href='https://www.facebook.com/ThomasMoreBE/'"><a href="https://www.facebook.com/ThomasMoreBE/">f</a></span>
+                    <span onclick="location.href='https://twitter.com/explore'"><a href="https://twitter.com/explore">t</a></span>
+                    <span onclick="location.href='https://nl.linkedin.com/'"><a href="https://nl.linkedin.com/">ln</a></span>
+                </div>
+            </div>
+            <img src="images/logo_hyperrent.png" onclick="location.href='Login.aspx'" />
+        </div>
+        <p>
+            Website made by <span>©</span> <%--<a href="mailto:r0851950@student.thomasmore.be"--%> <a href="mailto:thimo@fmgraphics.be" style="color: white;">Thimo Mortelmans</a><br />
+            <a href="./docs/Privacy%20Policy.pdf">Privacy policy</a> - 
+            <a href="./docs/ALGEMENE%20HUURVOORWAARDEN%20hyperrent.pdf">algemene voorwaarden</a> - 
+            <a href="./docs/disclaimer.pdf">disclaimer</a>
+        </p>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,2455 @@
+﻿
+/*#region MasterPage */
+
+@font-face {
+    font-family: 'ComfortaaBold-rmEK';
+    src: url('../fonts/ComfortaaBold-rmEK.ttf') format('truetype');
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'ComfortaaBold-rmEK';
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+}
+
+a, a:active, a:hover, a:visited {
+    text-decoration: none;
+}
+/*#region scrollbar*/
+::-webkit-scrollbar {
+    width: 15px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px grey;
+    background: #303030;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: gray;
+    border-radius: 8px;
+}
+
+    /* Handle on hover */
+    ::-webkit-scrollbar-thumb:hover {
+        background: lightgray;
+    }
+
+/*this is for firefox*/
+html {
+    scrollbar-color: gray #303030;
+}
+/*#endregion*/
+
+/*#region Navigationbar */
+
+header {
+    height: 120px;
+}
+
+.underheader {
+    height: 120px;
+    width: 100%;
+}
+
+nav {
+    height: 120px;
+    width: 100%;
+    background-color: transparent;
+    position: fixed;
+    box-shadow: 0px 2px 30px black;
+    z-index: 10;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+}
+
+#belownav {
+    background-color: #303030;
+    opacity: 0.5;
+    width: 100%;
+    position: fixed;
+    height: 120px;
+    z-index: 9;
+}
+
+    nav > ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 2%;
+        overflow: hidden;
+        width: 100%;
+    }
+
+        nav > ul > li {
+            padding: 1% 2%;
+            display: inline;
+            float: right;
+            cursor: pointer;
+            
+        }
+
+            nav > ul > li:first-child {
+                float: left;
+            }
+
+            nav > ul > li:hover, nav > ul > li > a {
+                color: white;
+            }
+
+            nav > ul > li > a {
+                color: white;
+                /*font-size: 1.5em;*/
+            }
+
+/*#endregion */
+
+/*#region Footer */
+
+footer {
+    width: 100%;
+    min-height: 20vh;
+    background-color: #303030;
+    color: white;
+    /*font-size: 1.5em;*/
+}
+
+footer > div {
+    padding: 5%;
+    height: 100%;
+    display: grid;
+    grid-template-columns: 50% 50%;
+}
+
+footer > p {
+    text-align: center;
+    color: white !important;
+    background-color: #303030;
+    padding: 2%;
+}
+
+footer > p > span {
+    /*font-size: 1.5em;*/
+}
+
+footer > div > div {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+footer > div > img {
+    height: 100%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+footer > div > div > span, footer > div > div > a {
+    display: block;
+}
+
+footer > div > div > div {
+    display: grid;
+    grid-template-columns: 2em 2em 2em;
+    margin-top: 4%;
+}
+
+footer > div > div > div > span {
+    background-color: gray;
+    color: gray;
+    border-radius: 50%;
+    margin-right: 15%;
+    font: 1.5em;
+    font-weight: bold;
+    text-align: center;
+    padding-top: 10%;
+    padding-bottom: 10%;
+    opacity: 1;
+    cursor: pointer;
+}
+
+    footer > div > div > div > span:hover, footer > div > div > div > a:hover {
+        opacity: 0.8;
+    }
+
+footer a {
+    color: white;
+}
+
+/*#endregion */
+
+#fullpage {
+    min-width: 100vw;
+    min-height: calc(100vh - 120px);
+    background-image: url('../images/black_marble.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.txt {
+    border-bottom: solid gray 0.1em;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    padding: 5px;
+    width: 100%;
+    background-color: transparent;
+    margin-bottom: 2%;
+    margin-top: 1%;
+    /*font-size: 1em;*/
+    color: gray;
+}
+
+.txtmulti {
+    width: 100%;
+    color: gray;
+    /*font-size: 1em;*/
+    min-height: 50px;
+    max-height: 250px;
+    padding: 5px;
+    margin-bottom: 2%;
+    margin-top: 1%;
+    resize: vertical;
+    border: solid gray 0.1em;
+    background-color: transparent;
+}
+
+.button {
+    background-color: #303030;
+    color: white;
+    padding: 2%;
+    /*font-size: 1em;*/
+    margin-left: auto;
+    margin-right: auto;
+    cursor: pointer;
+}
+
+.ddl {
+    border-bottom: solid gray 0.1em;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    padding: 5px;
+    width: 100%;
+    background-color: transparent;
+    margin-bottom: 8%;
+    margin-top: 8%;
+    /*font-size: 1em;*/
+    color: gray;
+}
+
+/*#region Checkbox */
+
+.cb {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+
+.cblbl {
+    overflow: hidden;
+    display: flex;
+    position: relative;
+    padding-left: 35px;
+    cursor: pointer;
+    /*font-size: 1em;*/
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    margin-bottom: 1%;
+}
+
+.cbspan {
+    position: absolute;
+    top: 10%;
+    left: 0;
+    height: 25px;
+    width: 25px;
+    background-color: lightgray;
+    opacity: 0.7;
+}
+
+.cbspan:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+.cblbl input:checked ~ .cbspan:after {
+    display: block;
+}
+
+.cblbl .cbspan:after {
+    left: 8px;
+    top: 5px;
+    width: 5px;
+    height: 10px;
+    border: solid #303030;
+    border-width: 0 5px 5px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+
+#logindiv > div > div {
+    display: flex;
+    justify-content: center;
+}
+
+/*#endregion */
+
+div, p {
+    font-size: 1em;
+}
+
+/*#endregion */
+/*#region Default.aspx */
+
+/*#region intro */
+
+#ContentPlaceHolder1_introdiv {
+    width: 100%;
+    min-height: calc(100vh - 120px);
+    /*background-image: url('../images/dashboard_interface.jpg');*/
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+    #ContentPlaceHolder1_introdiv iframe {
+        min-height: calc(100vh - 120px);
+        width: calc(100vh - 120px);
+    }
+
+    #ContentPlaceHolder1_introdiv input, #ContentPlaceHolder1_p2 input {
+        border: none;
+        background: none;
+        text-align: left;
+    }
+
+
+    #ContentPlaceHolder1_introdiv p, #ContentPlaceHolder1_introdiv input {
+        max-width: 50%;
+        /*font-size: 1.2em;*/
+        color: white;
+        background-color: rgba(195, 195, 195, .8);
+        /*background-color: darkgray;*/
+        /*opacity: 0.8;*/
+        padding: 2%;
+        margin-bottom: 35%;
+    }
+
+/*#endregion */
+
+/*#region info */
+
+#infodiv {
+    background-color: #303030;
+    padding-left: 10%;
+    padding-right: 10%;
+    padding-top: 7%;
+    padding-bottom: 5%;
+    overflow: auto;
+    min-height: 100vh;
+}
+
+#infodiv > iframe {
+    max-width: 100%;
+    width: 100%;
+}
+
+#infodiv > div {
+    display: grid;
+    grid-template-columns: 50% 50%;
+    margin-bottom: 2%;
+    align-items: center;
+    justify-content: center;
+}
+#infodiv > div > div {
+    float: right;
+    padding-top: 5%;
+    padding-left: 4%;
+    /*font-size: 1.5em;*/
+}
+
+#infodiv > div > div > h2 {
+    text-align: center;
+    color: gray;
+    /*font-size: 2.3em;*/
+    border-bottom: solid gray .1em;
+    margin-bottom: 2%;
+    padding-bottom: 1%;
+}
+
+#infodiv > div > div > p {
+    color: white;
+        line-height: 1.5em;
+        margin-bottom: 2%;
+}
+
+#infodiv > div > div > div {
+    display: flex;
+    justify-content:center;
+    align-items: center;
+    color: ghostwhite;
+    /*font-size: 1em;*/
+}
+
+    #infodiv > div > div > div > div > span {
+        display: block;
+    }
+
+#infoimg {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/*#endregion */
+
+/*#region Contact */
+
+#contactdiv {
+    background-color: white;
+    color: #303030;
+    min-height: 100vh;
+    padding-top: 5%;
+    padding-bottom: 5%;
+    align-items: center;
+    display: flex;
+    /*font-size: 2em;*/
+}
+
+#contactdiv > div {
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+    padding: 1%;
+}
+
+#contactdiv > div > h2 {
+    color: gray;
+    /*font-size: 2.5em;*/
+    text-align: center;
+    margin-bottom: 10%;
+}
+
+/*#endregion */
+
+/*#endregion */
+/*#region Reserveren.aspx */
+
+/*#region categorieën */
+
+#categorieendiv {
+    width: 100%;
+    padding-top: 3%;
+    padding-bottom: 5%;
+    background-color: white;
+    height: auto;
+    overflow: hidden;
+}
+
+#categorieendiv > h2 {
+    text-align: center;
+    /*font-size: 4em;*/
+    margin-bottom: 2%;
+    color: gray;
+}
+
+#categorieendiv > div {
+    display: grid;
+    grid-template-columns: 25% 25% 25%;
+    justify-content: center;
+    width: 100%;
+}
+
+.soortinstrument {
+    border: none 2px;
+    padding: 10%;
+    margin-left: 10%;
+    transition: border .5s;
+    border: solid transparent 2px;
+}
+
+.soortinstrument:hover {
+    border: solid darkgray 2px;
+    transition: border .5s;
+}
+
+.soortinstrument > div > img {
+    width: 100%;
+    display: block;
+}
+
+.soortinstrument > div > span {
+    color: dodgerblue;
+    margin-top: 2%;
+    margin-bottom: 2%;
+    display: block;
+    /*font-size: 5em;*/
+    text-align: center;
+}
+
+.soortinstrument > div > h3 {
+    color: black;
+    display: block;
+    text-align: center;
+    /*font-size: 1.7em;*/
+}
+
+/*#endregion */
+
+/*#region instrumenten */
+
+.dvinstrumenten {
+    width: 100%;
+    padding: 5%;
+    overflow: hidden;
+    display: grid;
+    grid-template-columns: 30% 30% 30%;
+}
+
+.whiteinstrumentendiv {
+    background-color: ghostwhite;
+}
+
+.blackinstrumentendiv {
+    background-color: #303030;
+}
+
+    .blackinstrumentendiv > a {
+        padding: 10%;
+        display: grid;
+        justify-content: center;
+        cursor: pointer;
+    }
+
+.dvinstrumenten > a {
+    border: solid transparent 2px;
+    padding: 10%;
+    transition: border 0.5s;
+    margin-left: 10%;
+    margin-right: 10%;
+}
+
+    .dvinstrumenten > a > img {
+        height: 300px;
+        max-width: 100%;
+        object-fit: contain;
+        display: block;
+    }
+
+    .dvinstrumenten > a > span {
+        color: gray;
+        text-align: center;
+        font-weight: bold;
+        display: block;
+        margin-top: 10%;
+    }
+
+    .dvinstrumenten > a > h4 {
+        /*font-size: 2em;*/
+        display: block;
+        text-align: center;
+        margin-top: 10%;
+    }
+
+.whiteinstrumentendiv > a > h4 {
+    color: #303030;
+}
+
+.blackinstrumentendiv > a > h4 {
+    color: ghostwhite;
+}
+
+.whiteinstrumentendiv > a:hover {
+    border: solid #303030 2px;
+    transition: border .5s;
+}
+
+.blackinstrumentendiv > a:hover {
+    border: solid ghostwhite 2px;
+    transition: border .5s;
+}
+
+
+/*#endregion */
+
+/*#region reserveren */
+
+#reserverendiv {
+    width: 100%;
+    background-color: ghostwhite;
+}
+
+#reserverendiv > div {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 50% 28%;
+    padding: 7%;
+    /*font-size: 2em;*/
+}
+
+#reserverendiv > div > div:first-child {
+    border: none;
+    margin-right: 15%;
+    padding: 10%;
+}
+
+#reserverendiv > div > div {
+    border: solid #303030 2px;
+    padding: 8%;
+}
+
+#reserverendiv > div > div > div {
+    width: 100%;
+    background-color: ActiveBorder;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 25%;
+}
+
+#reserverendiv > div > div > div > img {
+    height: 400px;
+    max-width: 100%;
+    object-fit: contain;
+    display: block;
+    padding: 5%;
+}
+
+#reserverendiv > div > div > span {
+    font-weight: bold;
+    color: #303030;
+    text-align: center;
+}
+
+/*#endregion */
+
+/*#endregion */
+/*#region Lessen.aspx */
+
+
+.lessendiv {
+    min-height: calc(100vh - 240px);
+    width: 100%;
+    height: 100%;
+    background-color: ghostwhite;
+    padding: 4%;
+    display: grid;
+    grid-template-columns: 30% 30% 30%;
+}
+
+    .lessendiv > div {
+        box-shadow: 2px 2px 10px #888888;
+        color: #303030;
+        background-color: white;
+        font-size: 1.3em;
+        padding-bottom: 2%;
+        margin-left: 8%;
+        margin-bottom: 8%;
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-row-gap: 0;
+    }
+
+    .lessendiv img {
+        width: 100%;
+        display: block;
+        margin: 0;
+    }
+
+    .lessendiv p {
+        margin: 0 5%;
+    }
+
+    .lessendiv h3  {
+        padding: 2% 5%;
+        text-align: center;
+        background-color: lightgray;
+        color: white;
+        margin: 0;
+    }
+
+/*.lessendiv > div > div > img {
+    width: 100%;
+    background-color: darkgray;
+    opacity: 0.9;
+}
+
+        .lessendiv > div {
+            margin-left: 5%;
+            margin-right: 5%;
+        }
+
+            .lessendiv > div > div {
+                margin-left: 5%;
+                margin-right: 5%;
+                display: flex;
+                align-items: flex-end;
+            }*/
+
+.bottomLes {
+    padding: 0 5%;
+    align-self: flex-end;
+    display: block;
+}
+
+.bottomLes:first-child {
+    border-right: none;
+}
+
+.bottomLes input {
+    float: left;
+    border: solid #303030 2px;
+    transition: background-color 0.3s, color .3s;
+    background-color: transparent;
+    color: #303030;
+    cursor: pointer;
+    padding: 10px;
+    /*font-size: 1.5em;*/
+}
+
+.bottomLes > input:hover {
+    transition: background-color .3s, color .3s;
+    background-color: #303030;
+    color: white;
+}
+
+.bottomLes span {
+    float: right;
+    color: gray;
+    /*font-size: 1.5em;*/
+    margin-top: 3%;
+}
+
+/*#endregion */
+/*#region Info.aspx */
+
+/*#region info */
+
+#reparatiesinfodiv {
+    width: 100%;
+    min-height: calc(100vh - 120px);
+    /*background-image: url('../images/bgblackedreparaties.png');*/
+    background-image: url('../images/info_bg.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    align-items: center;
+}
+
+#reparatiesinfodiv > div {
+    margin-left: auto;
+    margin-right: auto;
+    width: 30%;
+    text-align: center;
+}
+
+#reparatiesinfodiv > div > h2 {
+    color: gray;
+    /*font-size: 3em;*/
+    margin-bottom: 2%;
+    padding-bottom: 1%;
+}
+
+#reparatiesinfodiv > div > p {
+    /*font-size: 1.8em;*/
+    color: white;
+    opacity: 0.8;
+    padding: 2%;
+}
+
+#reparatiesinfodiv > div > span {
+    color: gray;
+    /*font-size: 3em;*/
+}
+
+/*#endregion */
+
+/*#region soorten */
+
+#Soorten {
+    min-height: calc(100vh - 120px);
+}
+
+#reparatiesoortendiv {
+    min-height: calc(90vh - 120px);
+    width: 100%;
+    background-color: #303030;
+    padding-bottom: 5%;
+    padding-top: 5%;
+}
+
+#reparatiesoortendiv input[type=submit] {
+    visibility: hidden;
+    height: 0;
+    width: 0;
+}
+
+    #reparatiesoortendiv > div {
+        width: 60%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    #reparatiesoortendiv > div > div {
+        display: flex;
+        align-items: center;
+        height: 500px;
+    }
+
+    #reparatiesoortendiv > div > div > div > h3 {
+        color: gray;
+        /*font-size: 3em;*/
+        border-bottom: solid gray .1em;
+        margin-bottom: 2%;
+        margin-left: 4%;
+        margin-right: 4%;
+        padding-bottom: 1%;
+    }
+
+    #reparatiesoortendiv > div > div > div > p {
+        color: ghostwhite;
+        /*font-size: 1.5em;*/
+        margin-left: 4%;
+        margin-right: 4%;
+    }
+
+    #reparatiesoortendiv > div > div > img {
+        width: 50%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+        #reparatiesoortendiv > div > div > div {
+            width: 50%;
+            overflow-y: auto;
+            max-height: 100%;
+        }
+
+            #reparatiesoortendiv > div > div > div > div:last-child > p {
+                margin-top: 20px;
+            }
+
+    #reparatiesoortendiv > div > div > div > div {
+        text-align: center;
+        padding-top: 5%;
+        color: lightgray;
+    }
+
+.blogiteminfo {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    text-align: center;
+}
+
+/*#endregion */
+
+/*#region Aanvraag */
+
+#reparatieaanvraagdiv {
+    width: 100%;
+    background-color: ghostwhite;
+    height: 70vh;
+    display: table-cell;
+    vertical-align: middle;
+    padding-bottom: 5%;
+    padding-top: 5%;
+}
+
+#reparatieaanvraagdiv > div {
+    width: 70%;
+    margin-left: auto;
+    margin-right: auto;
+    display: grid;
+    grid-template-columns: 50% 50%;
+}
+
+#reparatieaanvraagdiv > h2 {
+    color: gray;
+    /*font-size: 4em;*/
+    text-align: center;
+    margin-bottom: 5%;
+}
+
+#reparatieaanvraagdiv > div > div:first-child {
+    margin-right: 20%;
+    color: #303030;
+    text-align: left;
+    padding: 2.5%;
+}
+
+#reparatieaanvraagdiv > div > div {
+    /*font-size: 1.5em;*/
+    color: gray;
+    text-align: center;
+}
+
+#raanvraag {
+    display: flex;
+    align-items: center;
+}
+
+/*#endregion */
+
+/*#endregion */
+/*#region Blag.aspx*/
+#reparatiesoortendiv .txt {
+    width: 70%;
+    margin-left: auto;
+    margin-right: auto;
+}
+/*#endregion*/
+/*#region Login.aspx */
+
+#logindiv {
+    /*background-image: url('../images/woordenbackground.jpg');*/
+    /*background-image: url('../images/porsche_steering_wheel.jpg');*/
+    background-image: url('../images/dashboard_interface.jpg');
+    background-repeat: no-repeat;
+    background-position: top;
+    background-size: cover;
+    width: 100%;
+    min-height: calc(100vh - 120px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#logindiv > div {
+    /*font-size: 2em;*/
+    width: 30%;
+    min-height: 350px;
+    color: ghostwhite;
+    padding: 4%;
+    z-index: 8;
+    position: absolute;
+}
+
+#underlogin {
+    background-color: #232754;
+    /*background-color: transparent;*/
+    opacity: 0.5;
+    position: absolute;
+    height: 120px;
+    z-index: 7;
+}
+
+.loginlbl {
+    width: 100%;
+}
+
+.txtlogin {
+    margin-bottom: 4%;
+    width: 100%;
+    background-color: lightgray;
+    color: #303030;
+    opacity: .6;
+    padding: 1%;
+    /*font-size: 1em;*/
+}
+
+.midlogin {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 2%;
+}
+
+/*#endregion */
+/*#region Beheerder.aspx */
+
+#beheerderdiv {
+    width: 100%;
+    min-height: calc(100vh - 120px);
+    background-color: lightgray;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#beheerderdiv > div {
+    background-color: ghostwhite;
+    width: 900px;
+    max-height: 100%;
+    height: 700px;
+    box-shadow: 0px 1px 20px;
+    margin-right: 10%;
+    overflow: hidden;
+}
+
+/*#region Menu */
+
+#bChoose {
+    top: 50%;
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+    position: fixed;
+    right: 0;
+    opacity: 0.7;
+    padding: 0.8%;
+    width: 100px;
+    height: auto;
+    overflow: hidden;
+}
+
+#underchoose {
+    background-color: gray;
+    position: absolute;
+    width: 55%;
+    height: 95%;
+    right: 0;
+    overflow: hidden;
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+    z-index: 8;
+    opacity: 0.7;
+}
+
+.btnAutoen {
+    background-image: url('../images/beheerder/race-car-icon.png');
+    margin-top: 10%;
+}
+
+.btnLessen {
+    background-image: url('../images/beheerder/lesson.png');
+    margin-bottom: 10%;
+    margin-top: 10%;
+}
+
+.btnBlog {
+    background-image: url('../images/beheerder/blog.png');
+    margin-bottom: 10%;
+    margin-top: 10%;
+}
+
+.btnFaq {
+    background-image: url('../images/beheerder/question.png');
+}
+
+.btnLogOut {
+    background-image: url('../images/beheerder/logout.png');
+}
+
+.btnBeheerder {
+    position: relative;
+    display: block;
+    border: none;
+    background-size: contain;
+    background-position: right;
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+    background-repeat: no-repeat;
+    background-color: transparent;
+    transition: .7s;
+    width: 100%;
+    padding-left: 100px;
+    z-index: 9;
+}
+
+.btnBeheerder:hover {
+    transition: background-position 0.7s ease-out;
+    background-position: center;
+}
+
+/*#endregion */
+
+/*#region MenuItems */
+
+.menuitem {
+    width: 100%;
+    min-height: 100%;
+    overflow: auto;
+    background-color: #303030;
+}
+
+.menuitem > div {
+    display: grid;
+    grid-template-columns: 50% 50%;
+}
+
+.menuitem > div > div {
+    padding: 3%;
+    border: solid transparent 2px;
+}
+
+#faqgrid {
+    width: 100%;
+    min-height: 100%;
+    background-color: #303030;
+}
+
+#faqgrid > div {
+    width: 100%;
+    display: normal;
+    grid-template-columns: none;
+    /*font-size: 1.5em;*/
+}
+
+/*#endregion */
+
+/*#region Content */
+
+.menuitem > h2 {
+    text-align: center;
+    color: gray;
+    /*font-size: 3.5em;*/
+    margin-top: 2%;
+}
+
+#faqgrid > h2 {
+    text-align: center;
+    color: gray;
+    /*font-size: 3.5em;*/
+    margin-top: 2%;
+    margin-bottom: 2%;
+}
+
+.bbottom {
+    margin-top: 2%;
+}
+
+.btxt {
+    font-size: 1.5em;
+    padding: 2%;
+    padding-left: 4%;
+    color: lightgray;
+    border-color: gray;
+    border-radius: 15px;
+    background-color: transparent;
+    width: 88%;
+    margin-top: 1%;
+    margin-bottom: 1%;
+    transition: color 0.3s, border 0.3s;
+}
+
+.bmultitxt {
+    height: 80px;
+    resize: none;
+    overflow: auto;
+}
+
+.bddl {
+    /*font-size: 1.5em;*/
+    width: 94%;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    padding: 10px;
+    margin-top: 1%;
+    margin-bottom: 1%;
+    cursor: pointer;
+    color: gray;
+    border: solid darkgray 2px;
+    background-color: transparent;
+    transition: color 0.3s, border 0.3s;
+}
+
+#beheerderdiv select {
+    color: GhostWhite;
+    background-color: #303030;
+}
+
+.bfu {
+    /*font-size: 1.5em;*/
+    margin-top: 1%;
+    margin-bottom: 1%;
+    padding: 10px;
+    width: 90%;
+    background-color: transparent;
+    color: lightgray;
+    border: solid darkgray 2px;
+    cursor: pointer;
+    transition: color 0.3s, border 0.3s;
+}
+
+.bbutton {
+    /*font-size: 1.5em;*/
+    padding: 10px;
+    margin-left: 1%;
+    background-color: transparent;
+    border: solid gray 2px;
+    color: gray;
+    margin-top: 2%;
+    cursor: pointer;
+    transition: color 0.3s, border 0.3s;
+}
+
+.bbutton:hover, .bmultitxt:hover, .bfaqbutton:hover, .bfaqtxt:hover, .btxt:hover, .bddl:hover, .bfu:hover {
+    color: ghostwhite;
+    border-color: ghostwhite;
+    transition: all 0.3s;
+}
+
+.bfaqtxt {
+    /*font-size: 1.5em;*/
+    padding: 2%;
+    padding-left: 4%;
+    color: lightgray;
+    border-color: gray;
+    border-radius: 15px;
+    background-color: transparent;
+    width: 35%;
+    margin-top: 1%;
+    margin-bottom: 1%;
+    transition: color 0.3s, border 0.3s;
+}
+
+.bfaqbutton {
+    max-width: 30%;
+    /*font-size: 1.5em;*/
+    padding: 10px;
+    background-color: transparent;
+    border: solid gray 2px;
+    color: gray;
+    margin-top: 2%;
+    cursor: pointer;
+    transition: color 0.3s, border 0.3s;
+}
+
+/*#region instrumenten */
+
+.instrumentPreview > div {
+    border: solid transparent 2px;
+    padding: 10%;
+    transition: border 0.5s;
+}
+
+.instrumentPreview > div > img {
+    height: 300px;
+    max-width: 100%;
+    object-fit: contain;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.instrumentPreview > div > span {
+    color: gray;
+    text-align: center;
+    font-weight: bold;
+    display: block;
+    margin-top: 10%;
+}
+
+.instrumentPreview > div > h4 {
+    /*font-size: 2em;*/
+    display: block;
+    text-align: center;
+    margin-top: 10%;
+    color: ghostwhite;
+}
+
+.instrumentPreview > div:hover {
+    border: solid ghostwhite 2px;
+    transition: border .5s;
+}
+
+/*#endregion */
+
+/*#region lessen */
+
+.lesdiv > div {
+    box-shadow: 2px 2px 10px #888888;
+    color: #303030;
+    background-color: white;
+    padding-bottom: 2%;
+    /*font-size: 1.3em;*/
+    position: relative;
+    height: 100%;
+    width: 100%;
+}
+
+    .lesdiv > div > img {
+        width: 100%;
+        display: block;
+        margin: 0;
+    }
+
+.lesdiv > div > p {
+    padding: 5%;
+    /*font-size: 1.5em;*/
+}
+
+    .lesdiv h3 {
+        padding: 2% 5%;
+        text-align: center;
+        background-color: lightgray;
+        color: white;
+        margin: 0;
+    }
+
+.lesdiv > div > div {
+    bottom: 0;
+    width: 90%;
+    position: sticky;
+    padding: 4%;
+}
+
+.lesdiv > div > div:first-child {
+    border-right: none;
+}
+
+.lesdiv > div > div > input {
+    float: left;
+    border: solid #303030 2px;
+    transition: background-color 0.3s, color .3s;
+    background-color: transparent;
+    color: #303030;
+    cursor: pointer;
+    padding: 10px;
+    /*font-size: 1.5em;*/
+}
+
+.lesdiv > div > div > input:hover {
+    transition: background-color .3s, color .3s;
+    background-color: #303030;
+    color: white;
+}
+
+.lesdiv > div > div > span {
+    float: right;
+    color: gray;
+    /*font-size: 1.5em;*/
+    margin-top: 3%;
+}
+
+/*#endregion */
+
+/*#endregion */
+
+/*#endregion */
+/*#region Faq.aspx */
+
+#faqdiv {
+    /*background-image: url('../images/woordenbackground.jpg');*/
+    background-image: url('../images/black_marble_rotated.jpg');
+    background-repeat: repeat-x;
+    background-size: cover;
+    width: 100%;
+    min-height: calc(100vh - 120px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#faqdiv > div{
+    /*font-size: 2em;*/
+    width: 70%;
+    min-height: 500px;
+    padding: 0% 4% 4% 4%;
+    z-index: 8;
+    position: absolute;
+    height: 40%;
+    overflow: auto;
+    display: grid;
+    grid-template-columns: 1fr;
+}
+
+#faqdiv > div:nth-child(2) > div:first-child {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 80px;
+}
+
+#underfaq {
+    background-color: #303030;
+    opacity: 0.5;
+    position: absolute;
+    min-height: 500px;
+    height: 40%;
+    z-index: 7;
+}
+
+.vraag {
+    color: lightgray;
+    padding-bottom: 1%;
+}
+
+.antwoord{
+    color: ghostwhite;
+    padding-left: 10%;
+    padding-bottom: 1%;
+}
+
+.faqheader {
+    display: none;
+    padding-bottom: 0%;
+}
+
+/*#endregion */
+/*#region Lesinfo.aspx */
+
+.lesinfodiv {
+    width: 100%;
+    min-height: calc(100vh - 120px);
+    display: grid;
+    grid-template-columns: 50% 50%;
+    /*font-size: 2.5em;*/
+}
+
+    .lesinfodiv > div {
+        height: 100%;
+        width: 100%;
+        color: #303030;
+    }
+
+/*#region left side */
+
+#llesinfo {
+    background-color: ghostwhite;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+    #llesinfo > img {
+        width: 70%;
+        height: 100%;
+        object-fit: contain;
+        display: block;
+    }
+
+/*#endregion */
+
+/*#region right side */
+
+#rlesinfo {
+    width: 100%;
+    background-color: lightgray;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#rlesinfo > div {
+    width: 70%;
+    min-height: 60%;
+}
+
+#rlesinfo > div > span {
+    text-align: center;
+    display: block;
+    margin-top: 3%;
+}
+
+#rlesinfo > div > div {
+    display: grid;
+    grid-template-columns: 50% 50%;
+    padding: 3%;
+}
+
+#rlesinfo > div > div > span {
+    display: block;
+    text-align: center;
+    margin-top: 8%;
+    align-self: center;
+}
+
+#rlesinfo > div > p {
+    padding: 5%;
+}
+
+#rlesinfo > div > a {
+    display: block;
+    margin-top: 3%;
+    text-align: center;
+    width: 250px;
+}
+
+/*#endregion */
+
+/*#region Standaardinfo */
+
+#standaardinfodiv {
+    width: 100%;
+    background-color: #303030;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#standaardinfodiv > div {
+    width: 70%;
+    height: 100%;
+    padding: 5%;
+}
+
+#standaardinfodiv > div > h2 {
+    color: gray;
+    /*font-size: 3em;*/
+    border-bottom: solid gray .1em;
+    margin-bottom: 2%;
+    margin-left: 4%;
+    margin-right: 4%;
+    padding-bottom: 1%;
+}
+
+#standaardinfodiv > div > p {
+    color: ghostwhite;
+    /*font-size: 1.5em;*/
+    margin-left: 4%;
+    margin-right: 4%;
+}
+
+/*#endregion */
+
+/*#region Inschrijven */
+
+#inschrijvendiv {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: ghostwhite;
+}
+
+#inschrijvendiv > div {
+    width: 60%;
+    height: 100%;
+    padding: 5%;
+    /*font-size: 2em;*/
+}
+
+#inschrijvendiv > div > h2 {
+    color: gray;
+    /*font-size: 2.5em;*/
+    text-align: center;
+    margin-bottom: 10%;
+}
+
+/*#endregion */
+
+/*#endregion */
+/*#region Autoinfo.aspx */
+
+.autoinfodiv {
+    width: 100%;
+    min-height: calc(100vh - 120px);
+    display: grid;
+    grid-template-columns: 50% 50%;
+    /*font-size: 2.5em;*/
+}
+
+    .autoinfodiv > div {
+        height: 100%;
+        width: 100%;
+        color: #303030;
+    }
+
+/*#region left side */
+
+#lautoinfo {
+    background-color: ghostwhite;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+    #lautoinfo > img {
+        width: 70%;
+        height: 100%;
+        object-fit: contain;
+        display: block;
+    }
+
+/*#endregion */
+
+/*#region right side */
+
+#rautoinfo {
+    width: 100%;
+    background-color: lightgray;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+    #rautoinfo > div {
+        width: 70%;
+        min-height: 60%;
+    }
+
+        #rautoinfo > div > h3 {
+            text-align: center;
+            display: block;
+            margin-top: 3%;
+        }
+
+        #rautoinfo > div > div {
+            display: grid;
+            grid-template-columns: 50% 50%;
+            padding: 3%;
+        }
+
+            #rautoinfo > div > div > div {
+                margin-top: 8%;
+            }
+
+            #rautoinfo > div > div > div > span {
+                display: block;
+                text-align: center;
+                align-self: center;
+            }
+
+            #rautoinfo > div > div > div > span:first-child {
+                color: green;
+            }
+
+        #rautoinfo > div > p {
+            padding: 5%;
+        }
+
+        #rautoinfo > div > a {
+            display: block;
+            margin-top: 3%;
+            text-align: center;
+            width: 250px;
+        }
+
+/*#endregion */
+
+/*#region Standaardinfo */
+
+#standaardinfodiv {
+    width: 100%;
+    background-color: #303030;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+    #standaardinfodiv > div {
+        width: 70%;
+        height: 100%;
+        padding: 5%;
+    }
+
+        #standaardinfodiv > div > h2 {
+            color: gray;
+            /*font-size: 3em;*/
+            border-bottom: solid gray .1em;
+            margin-bottom: 2%;
+            margin-left: 4%;
+            margin-right: 4%;
+            padding-bottom: 1%;
+        }
+
+        #standaardinfodiv > div > p {
+            color: ghostwhite;
+            /*font-size: 1.5em;*/
+            margin-left: 4%;
+            margin-right: 4%;
+        }
+
+/*#endregion */
+
+/*#region Inschrijven */
+
+#inschrijvendiv {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: ghostwhite;
+}
+
+    #inschrijvendiv > div {
+        width: 60%;
+        height: 100%;
+        padding: 5%;
+        /*font-size: 2em;*/
+    }
+
+        #inschrijvendiv > div > h2 {
+            color: gray;
+            /*font-size: 2.5em;*/
+            text-align: center;
+            margin-bottom: 10%;
+        }
+
+/*#endregion */
+
+/*#endregion */
+/*#region CourseReader.aspx*/
+#courseReaderDiv {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+/*#endregion*/
+/*#region Responsive */
+
+/*#region Masterpage */
+
+@media only screen and (max-width: 931px) {
+
+    header {
+        height: 280px;
+    }
+
+    nav {
+        height: 280px;
+        display: normal;
+        align-items:normal;
+    }
+
+    nav > ul {
+        padding: 0;
+    }
+
+    nav > ul > li {
+        display:block;
+        width: 100%;
+        float: none;
+        padding: 15px 0% 0% 8%;
+    }
+
+    #belownav {
+        height: 280px;
+    }
+
+    .underheader {
+        height: 280px;
+    }
+
+    nav > ul > li:first-child {
+        float: none;
+    }
+
+    nav > ul > li > a {
+        font-size: 30px;
+    }
+}
+
+@media only screen and (max-width: 511px) {
+
+    header {
+        height: 250px;
+    }
+
+    nav {
+        height: 250px;
+    }
+
+    #belownav {
+        height: 250px;
+    }
+
+    .underheader {
+        height: 250px;
+    }
+
+    nav > ul > li > a {
+        font-size: 25px;
+    }
+
+    footer > div {
+        display: normal;
+        grid-template-columns: none;
+    }
+
+    footer > div > img {
+        margin-top: 5%;
+    }
+
+    footer {
+        font-size: 1.5em;
+    }
+
+    footer > p {
+        font-size: .7em;
+    }
+}
+
+/*#endregion */
+
+/*#region Default */
+
+@media only screen and (max-width: 1621px) {
+
+    #infodiv > div > div > p {
+        font-size: .9em;
+    }
+
+}
+@media only screen and (max-width: 1366px) {
+
+    #ContentPlaceHolder1_introdiv p {
+        /*font-size: 1.5em;*/
+    }
+
+    #ContentPlaceHolder1_introdiv {
+        background-size: cover;
+    }
+
+    #infodiv > div > div > p {
+        font-size: .8em;
+        margin-bottom: .5%;
+    }
+
+    #infodiv > div > div > div > div > span {
+        font-size: .8em;
+    }
+
+    #infodiv > div > div > h2 {
+        font-size: 1.5em;
+    }
+
+    .txtmulti {
+        width: 99%;
+    }
+
+    #contactdiv > div > h2 {
+        font-size: 2em;
+    }
+
+}
+@media only screen and (max-width: 1211px) {
+    #infodiv > div {
+        display: normal;
+        grid-template-columns: none;
+    }
+
+    #infodiv > div > div > h2 {
+        font-size: 2em;
+    }
+
+    #infodiv > div > div > p {
+        font-size: 1em;
+        margin-bottom: 2%;
+    }
+
+    #infodiv > div > div > div > div > span {
+        font-size: 1em;
+    }
+}
+@media only screen and (max-width: 1000px) {
+    #contactdiv > div {
+        width: 70%;
+    }
+    .txtmulti {
+        width: 98%;
+    }
+}
+@media only screen and (max-width: 769px) {
+    #ContentPlaceHolder1_introdiv p {
+        max-width: 70%;
+    }
+
+    #contactdiv {
+        font-size: 1.5em;
+    }
+}
+@media only screen and (max-width: 601px) {
+    #contactdiv > div > h2 {
+        font-size: 1.5em;
+    }
+}
+@media only screen and (max-width: 511px) {
+
+    #ContentPlaceHolder1_introdiv p {
+        font-size: 1.3em;
+    }
+
+    #infodiv > div > div > h2 {
+        font-size: 1.5em;
+    }
+
+    #infodiv > div > div > p {
+        font-size: .8em;
+        margin-bottom: 4%;
+    }
+
+    #infodiv > div > div > div > div > span {
+        font-size: .8em;
+    }
+
+    .txtmulti {
+        width: 97%;
+    }
+}
+@media only screen and (max-width: 415px) {
+
+    #contactdiv {
+        font-size: 1.2em;
+    }
+}
+@media only screen and (max-width: 360px) {
+    #contactdiv {
+        font-size: 1em;
+    }
+}
+
+
+
+/*#endregion */
+
+/*#region Reserveren */
+
+@media only screen and (max-width: 1501px) {
+    .soortinstrument > div > h3 {
+        font-size: 1.5em;
+    }
+
+    .dvinstrumenten > a > img {
+        height: 500px;
+    }
+}
+
+@media only screen and (max-width: 1367px) {
+    .dvinstrumenten > a > span {
+        margin-top: 0%;
+    }
+
+    #reserverendiv > div {
+        grid-template-columns: 50% 35%;
+    }
+
+        #reserverendiv > div > div > div > img {
+            height: 300px;
+        }
+}
+
+@media only screen and (max-width: 1211px) {
+    #categorieendiv > div {
+        grid-template-columns: 30% 30% 30%;
+    }
+
+    .soortinstrument > div > h3 {
+        font-size: 1.3em;
+    }
+
+    #categorieendiv > h2 {
+        font-size: 3em;
+    }
+
+    .dvinstrumenten > a > img {
+        height: 400px;
+    }
+
+    .dvinstrumenten > a {
+        margin-left: 2%;
+        margin-right: 2%;
+    }
+
+    #reserverendiv > div {
+        font-size: 1.3em
+    }
+}
+
+@media only screen and (max-width: 1001px) {
+    .soortinstrument > div > h3 {
+        font-size: 1em;
+    }
+
+    .dvinstrumenten > a > h4 {
+        font-size: 1.5em;
+    }
+
+    .dvinstrumenten > a > img {
+        height: 300px;
+    }
+
+    #reserverendiv > div > div > div > img {
+        height: 300px;
+    }
+}
+
+@media only screen and (max-width: 769px) {
+    .soortinstrument {
+        margin-left: 2%;
+    }
+
+    #reserverendiv > div {
+        grid-template-columns: 50% 40%;
+        padding: 2%;
+        font-size: 1em;
+    }
+
+    .dvinstrumenten > a > img {
+        height: 200px;
+    }
+
+    #reserverendiv > div > div > div > img {
+        height: 200px;
+    }
+}
+
+@media only screen and (max-width: 671px) {
+
+    #categorieendiv > h2 {
+        font-size: 2em;
+    }
+
+    .soortinstrument > div > h3 {
+        font-size: .8em;
+        word-wrap: break-word;
+        -webkit-hyphens: manual;
+        -ms-hyphens: manual;
+        hyphens: manual;
+    }
+
+    .dvinstrumenten > a > h4 {
+        font-size: 1em;
+    }
+
+    #reserverendiv {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding-bottom: 5%;
+        padding-top: 5%;
+    }
+
+    #reserverendiv > div {
+        grid-template-columns: none;
+        display: normal;
+        width: 70%;
+        padding: 0;
+    }
+    
+    #reserverendiv > div > div {
+        width: 60%;
+        padding: 0;
+        margin-left: 20%;
+        padding: 5%;
+    }
+
+    #reserverendiv > div > div:first-child {
+        padding: 0;
+        margin-bottom: 5%;
+        margin-left: 0;
+        width: 90%;
+    }
+
+}
+
+@media only screen and (max-width: 511px) {
+    #categorieendiv > h2 {
+        font-size: 1.5em;
+    }
+
+    .dvinstrumenten > a > img {
+        height: 200px;
+    }
+
+    .dvinstrumenten > a > h4 {
+        font-size: .8em;
+    }
+
+    #reserverendiv > div > div > div > img {
+        height: 120px;
+    }
+
+    #reserverendiv > div > div {
+        margin-left: 15%;
+    }
+}
+
+@media only screen and (max-width: 415px) {
+    #categorieendiv > h2 {
+        font-size: 1.3em;
+    }
+
+    .soortinstrument > div > h3 {
+        font-size: .7em;
+    }
+}
+
+@media only screen and (max-width: 376px) {
+    .soortinstrument > div > h3 {
+        font-size: .6em;
+    }
+
+    .dvinstrumenten > a > img {
+        height: 160px;
+    }
+}
+
+/*#endregion */
+
+/*#region Lessen */
+
+@media only screen and (max-width: 1621px) {
+    .lessendiv > div {
+        font-size: 1em;
+        min-height: 700px;  
+    }
+}
+
+@media only screen and (max-width: 1501px) {
+    .lessendiv > div {
+        font-size: .8em;
+        min-height: 650px;  
+    }
+}
+
+@media only screen and (max-width: 1366px) {
+    .lessendiv > div {
+        font-size: .8em;
+        min-height: 600px;  
+    }
+}
+
+@media only screen and (max-width: 1211px) {
+    .lessendiv > div {
+        font-size: .8em;
+        min-height: 550px;  
+    }
+}
+
+@media only screen and (max-width: 1024px) {
+    .lessendiv > div {
+        font-size: .8em;
+        min-height: 500px;  
+    }
+
+    .lessendiv > div > div > input {
+        font-size: 1em;
+        padding: 5px;
+    }
+}
+
+@media only screen and (max-width: 930px) {
+    .lessendiv > div {
+        font-size: .8em;
+        min-height: 450px;  
+    }
+}
+
+@media only screen and (max-width: 769px) {
+    .lessendiv > div {
+        font-size: .7em;
+        min-height: 400px;  
+    }
+}
+
+@media only screen and (max-width: 671px) {
+    .lessendiv > div {
+        font-size: .6em;
+        min-height: 330px;  
+    }
+
+    .lessendiv > div > div > span {
+        font-size: 1.3em;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+
+    .lessendiv {
+        display: normal;
+        grid-template-columns: none;
+        padding: 0;
+        font-size: 1.2em;
+    }
+    
+    .lessendiv > div {
+        width: 60%;
+        float: left;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 3%;
+        margin-bottom: 3%;
+        min-height: 530px;
+    }
+
+    .lessendiv > div > div > input {
+        padding: 10px;
+        font-size: 1.3em;
+    }
+}
+
+@media only screen and (max-width: 511px) {
+    .lessendiv > div {
+        min-height: 500px;
+    }
+}
+
+@media only screen and (max-width: 415px) {
+    .lessendiv > div {
+        width: 80%;
+    }
+
+    .lessendiv > div > div > input {
+        padding: 5px;
+    }
+}
+
+/*#endregion */
+
+/*#region Reparaties */
+
+@media only screen and (max-width: 1501px) {
+
+    #reparatiesinfodiv > div {
+        width: 50%;
+    }
+}
+
+@media only screen and (max-width: 1212px) {
+    #reparatiesoortendiv > div > div > div > h3 {
+        font-size: 2.5em;
+    }
+
+    #reparatiesoortendiv > div > div > div > p {
+        /*font-size: 1.2em;*/
+    }
+
+    #reparatieaanvraagdiv > h2 {
+        font-size: 3em;
+    }
+
+    #reparatieaanvraagdiv > div {
+        width: 80%;
+    }
+
+    #reparatieaanvraagdiv > div > div {
+        font-size: 1em;
+    }
+}
+
+@media only screen and (max-width: 1001px) {
+    #reparatiesinfodiv > div > h2 {
+        font-size: 2.5em;
+    }
+
+    #reparatiesinfodiv > div > p {
+        /*font-size: 1.5em;*/
+    }
+
+    #reparatiesoortendiv > div > div > div > h3 {
+        font-size: 2.2em;
+    }
+
+    #reparatiesoortendiv > div > div > div > p {
+        font-size: 1em;
+    }
+
+    #reparatieaanvraagdiv > div {
+        display: normal;
+        grid-template-columns: none;
+        width: 70%;
+    }
+
+    #reparatieaanvraagdiv > div > div {
+        width: 97%;
+    }
+
+    #reparatieaanvraagdiv > h2 {
+        font-size: 2.5em;
+    }
+}
+
+@media only screen and (max-width: 769px) {
+    #reparatiesinfodiv > div > h2 {
+        font-size: 2.2em;
+    }
+
+    #reparatiesinfodiv > div > p {
+        /*font-size: 1.5em;*/
+    }
+
+    #reparatiesinfodiv > div {
+        width: 70%;
+    }
+
+    #reparatiesoortendiv > div > div > div > h3 {
+        font-size: 1.5em;
+    }
+
+    #reparatiesoortendiv > div > div > div > p {
+        font-size: .7em;
+    }
+
+    #reparatiesoortendiv > div {
+        width: 80%;
+    }
+}
+
+@media only screen and (max-width: 671px) {
+
+    #reparatieaanvraagdiv > div > div {
+        width: 96%;
+    }
+
+    #reparatieaanvraagdiv > h2 {
+        /*font-size: 2.2em;*/
+    }
+}
+
+@media only screen and (max-width: 511px) {
+    #reparatiesinfodiv > div > h2 {
+        font-size: 1.7em;
+    }
+
+    #reparatiesinfodiv > div > p {
+        font-size: 1.2em;
+    }
+
+    #reparatieaanvraagdiv > div {
+        width: 80%;
+    }
+
+    #reparatieaanvraagdiv > div > div {
+        width: 97%;
+    }
+
+    #reparatieaanvraagdiv > h2 {
+        font-size: 2em;
+    }
+}
+
+@media only screen and (max-width: 376px) {
+    #reparatiesinfodiv > div > h2 {
+        font-size: 1.5em;
+    }
+
+    #reparatiesinfodiv > div > p {
+        /*font-size: 1.2em;*/
+    }
+    #reparatiesinfodiv > div {
+        width: 90%;
+    }
+
+    #reparatiesoortendiv > div > div > div > h3 {
+        font-size: 1.2em;   
+    }
+
+    #reparatiesoortendiv > div > div > div > p {
+        font-size: .6em;   
+    }
+
+    #reparatieaanvraagdiv > div > div {
+        width: 95%;
+    }
+
+    #reparatieaanvraagdiv > h2 {
+        font-size: 1.4em;
+    }
+
+    #reparatieaanvraagdiv > div > div {
+        font-size: .8em;
+    }
+}
+
+/*#endregion */
+
+/*#region Faq */
+
+@media only screen and (max-width: 1501px) {
+    #faqdiv > div {
+        font-size: 1.5em;
+        min-height: 300px;
+    }
+}
+
+@media only screen and (max-width: 930px) {
+    #faqdiv > div {
+        font-size: 1em;
+        min-height: 300px;
+        width: 80%;
+    }
+}
+
+@media only screen and (max-width: 511px) {
+    .vraag {
+        padding-bottom: 3%;
+    }
+
+    .antwoord {
+        padding-bottom: 3%;
+        padding-left: 2%;
+    }
+}
+
+/*#endregion */
+
+/*#region Lesinfo */
+
+@media only screen and (max-width: 1501px) {
+    #rlesinfo > div {
+        width: 80%;
+        font-size: .8em;
+    }
+
+    #rlesinfo > div > span {
+        margin-top: 0%;
+    }
+}
+
+@media only screen and (max-width: 1367px) {
+    #standaardinfodiv > div {
+        width: 90%;
+    }
+
+    #inschrijvendiv > div > h2 {
+        font-size: 2em;
+    }
+}
+
+@media only screen and (max-width: 1001px) {
+    #rlesinfo > div {
+        width: 90%;
+    }
+
+    .lesinfodiv {
+        display: normal;
+        grid-template-columns: none;
+    }
+
+    #llesinfo > img {
+        padding: 5%;
+    }
+
+    #rlesinfo > div {
+        padding: 5%;
+    }
+}
+
+@media only screen and (max-width: 671px) {
+    #standaardinfodiv > div > h2 {
+        font-size:  2em;
+    }
+
+    #standaardinfodiv > div > p {
+        font-size: 1em;
+    }
+
+    #inschrijvendiv > div {
+        font-size: 1.5em;
+    }
+}
+
+@media only screen and (max-width: 511px) {
+    #rlesinfo {
+        font-size: .5em;
+    }
+
+    #inschrijvendiv > div {
+        font-size: 1em;
+    }
+}
+
+/*#endregion */
+
+/*#endregion */
